@@ -25,13 +25,15 @@ contract MyToken {
     // mapping variable here - mapping from an address to the balance of that address
     mapping (address => uint256) public balances;
 
-    constructor(string memory _tokenName, string memory _tokenSymbol, uint256 totalSupply) {
+    constructor(string memory _tokenName, string memory _tokenSymbol, uint256 _totalSupply) {
         tokenName = _tokenName;
         tokenSymbol = _tokenSymbol;
         totalSupply = _totalSupply;
-        balances[msg.sender] = _totalSupply; // Assign the total supply to the contract deployer
 
-    };
+        // Assign the total supply to the contract deployer
+        balances[msg.sender] = _totalSupply; 
+
+    }
 
     // mint function    
     function mint(address _to, uint256 _value) public {
@@ -40,5 +42,14 @@ contract MyToken {
     }
 
     // burn function
+    function burn(address _from, uint256 _value) public {
+        // Check if the sender has enough balance
+        require(balances[_from] >= _value, "Insufficient balacnce");
 
+        // decrease the total supply 
+        totalSupply -= _value;
+
+        // decrease the balance of the sender
+        balances[_from] -= _value;
+    }
 }
