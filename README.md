@@ -37,10 +37,8 @@ If you encounter any issues, you can click on the "Terminal" icon on the left si
 
 ## Authors
 
-Replace with your name and contact info
-
-Edwin Anajemba 
-@edwin_somto
+ Edwin Anajemba  
+ @edwin_somto
 
 ## License
 
